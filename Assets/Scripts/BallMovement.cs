@@ -24,6 +24,11 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            ScoreManager.Instance.AddScore(2);
+        }
+
         Vector2 v = rb.linearVelocity;
 
         if (Mathf.Abs(v.y) < 1f)
