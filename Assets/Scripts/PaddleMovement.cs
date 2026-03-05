@@ -17,8 +17,10 @@ public class PaddleMovement : MonoBehaviour
         moveInput = context.ReadValue<float>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2 (moveInput * speed, rb.linearVelocity.y);
+        //rb.linearVelocity = new Vector2 (moveInput * speed, rb.linearVelocity.y); 
+        Vector2 movement = new Vector2 (moveInput * speed * Time.fixedDeltaTime, 0); 
+        rb.MovePosition(rb.position + movement);
     }
 }
